@@ -1,3 +1,5 @@
+#General chapter examples:
+
 roster_list = ['clayton kershaw', 'mookie betts', 'cody bellinger']
 
 roster_list_upper = []
@@ -25,17 +27,20 @@ sum_of_salaries = sum([salary for _, salary in salary_per_player.items()])
 def hr_sweetspot(launch_angle, exit_velocity):
     return (25 <= launch_angle <= 35) and (exit_velocity >= 95)
 
-#exercise 2.3:
+#End of chapter exercises:
+
+#Exercise 2.3:
 
 def announce_pitch(player_name, pitch):
    return f"{player_name} with the {pitch}!"
 
-#exercise 2.5:
+
+#Exercise 2.5:
 
 def is_travisd(player_name):
     return player_name.replace("'", "").lower() == "travis darnaud"
 
-#exercise 2.6:
+#Exercise 2.6:
 
 def commentary(batting_avg):
     if batting_avg >= 300:
@@ -43,7 +48,7 @@ def commentary(batting_avg):
     else:
         return f"{batting_avg}'s not that good"
 
-#exercise 2.7:
+#Exercise 2.7:
 
 def commentary_plus_decimal(batting_avg):
     if batting_avg < 1:
@@ -51,7 +56,7 @@ def commentary_plus_decimal(batting_avg):
 
     return commentary(batting_avg)
 
-#exercise 2.8:
+#Exercise 2.8:
 
 dodgers_roster = ['clayton kershaw', 'cody bellinger', 'mookie betts']
 
@@ -62,12 +67,13 @@ print(dodgers_roster[0:2]),
 print(dodgers_roster[:2])
 
 #3:
-print([name for name in roster_list if name.startswith('c')])
+print([name for name in dodgers_roster if name.startswith('c')])
 
 #4:
 print([name for name in dodgers_roster if name != 'mookie betts'])
 
-#exercise 2.9:
+#Exercise 2.9:
+
 pitcher_info = {'starter': 'Kershaw', 'throws_right': False}
 
 #A:
@@ -78,7 +84,8 @@ def toggle_throws(pitcher):
     pitcher['throws_right'] = not pitcher['throws_right']
     return pitcher
 
-#exercise 2.11:
+#Exercise 2.11:
+
 my_roster_list = ['clayton kershaw', 'mookie betts', 'cody bellinger']
 
 #A:
@@ -88,8 +95,27 @@ for player in my_roster_list:
 #B:
 {player: len(player) for player in my_roster_list}
 
-#exercise 2.12:
+#Exercise 2.12:
+
 my_roster_dict = {'p': 'clayton kershaw', 'rf': 'mookie betts', '1b': 'cody bellinger'}
 
 #A:
-print([pos for pos in my_roster_dict])
+[pos for pos in my_roster_dict]
+
+#B:
+print([player for _, player in my_roster_dict.items() if player.split(' ')[-1].startswith('b')])
+
+#Exercise 2.13:
+
+#A:
+
+def mapper(list, function):
+    return [function(x) for x in list]
+
+#B:
+
+list_of_at_bats = [500, 410, 618, 288, 236]
+
+print(mapper(list_of_at_bats, lambda x: int(x*.300)))
+
+
