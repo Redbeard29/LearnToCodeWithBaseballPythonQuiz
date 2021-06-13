@@ -31,3 +31,19 @@ players.set_index('playerID', inplace=True)
 #reset the index value to the original numbers:
 
 players.reset_index().head(10)
+
+#return only the Cuban players, and store them in a variable:
+
+players_cuba = players.loc[
+    players['birthCountry'] == 'Cuba',
+    ['name', 'height', 'weight', 'birthCountry']
+]
+
+#sorting Cuban players by weight:
+players_cuba.sort_values('weight', inplace=True)
+
+#adding in the Cuban players' batting arms:
+players_cuba['bats'] = players['bats']
+
+#save the players_cuba dataframe to a csv file:
+players_cuba.to_csv(path.join(DATA_DIR, '2018-season', 'players_cuba.csv'))
