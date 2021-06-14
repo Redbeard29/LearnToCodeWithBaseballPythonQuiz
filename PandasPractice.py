@@ -29,11 +29,9 @@ print(players.set_index('playerID').head(10))
 players.set_index('playerID', inplace=True)
 
 #reset the index value to the original numbers:
-
 players.reset_index().head(10)
 
 #return only the Cuban players, and store them in a variable:
-
 players_cuba = players.loc[
     players['birthCountry'] == 'Cuba',
     ['name', 'height', 'weight', 'birthCountry']
