@@ -37,4 +37,31 @@ pp['is_a_FF'] = (pp['pitch_type'] == 'FF')
 pp['is_a_FF_or_SL'] = (pp['pitch_type'] == 'FF') | (pp['pitch_type'] == 'SL')
 pp['fast_fastball'] = ((pp['pitch_type'] == 'FF') & (pp['mph'] >= 95))
 
-print(pp[['pitcher', 'pitch_type', 'mph', 'fast_fastball']].sample(5))
+#practice applying my own functions to a DataFrame:
+
+def is_fastball(pitch):
+    """
+    Takes in a pitch as a string (Ex: 'CH', 'FF', 'FC') and determines whether or not it is a type of fastball.
+    The types of fastballs we're working with are: cutter, four-seam, two-seam, sinker, and splitter.
+    """
+    return pitch in ['FC', 'FF', 'FT', 'SI', 'FS']
+
+pp['is_fastball'] = pp['pitch_type'].apply(is_fastball)
+
+#This could also be done in one step with a lambda function:
+
+pp['is_fastball_alt'] = pp['pitch_type'].apply(lambda x: x in ['FC', 'FF', 'FT', 'SI', 'FS'])
+
+pp.drop('is_fastball_alt', axis=1, inplace=True)
+
+pp.rename(columns={'i': 'inning'}, inplace=True)
+
+#renaming columns using a list comprehension:
+pp.columns = [x.upper() for x in pp.columns]
+
+#changing back because uppercase is not pandas convention:
+pp.columns = [x.lower() for x in pp.columns]
+
+#same concept using the .rename() function:
+pp.rename(columns={'i': 'inning'}, inplace=True)
+
