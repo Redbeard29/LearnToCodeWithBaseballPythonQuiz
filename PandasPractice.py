@@ -45,3 +45,9 @@ players_cuba['bats'] = players['bats']
 
 #save the players_cuba dataframe to a csv file:
 players_cuba.to_csv(path.join(DATA_DIR, '2018-season', 'players_cuba.csv'))
+
+#creating a debut_month variable from our debut variable to practice type conversion:
+players['debut_month'] = players['debut'].astype(str).str[4:6]
+
+#converting the debut_month back to int type:
+players['debut_month'].astype(int).head(10)
