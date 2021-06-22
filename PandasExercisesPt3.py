@@ -2,7 +2,6 @@ import pandas as pd
 from os import path
 
 #3.2.1 - Load the at bat data into a DataFrame named dfb. You'll use it for the rest of the problems in this section:
-
 DATA_DIR = '/Users/benjaminsherman/Desktop/Documents/PersonalProjects/DataAnalyticsProjects/LearnToCodeWithBaseball/Files/ltcwbb-files-main/data'
 dfb = pd.read_csv(path.join(DATA_DIR, '2018-season', 'atbats.csv'))
 
@@ -33,3 +32,5 @@ dfb['AB'].max()
 
 #E - Find the number of times each team is represented in our DataFrame:
 dfb['team'].value_counts()
+
+print(dfb.head())
